@@ -24,7 +24,7 @@ local function neighbour_repetitions(context)
     if not i then return nil end
     local repetitions = 0
     local left = context.full_hand[i - 1]
-    if left and U.active(left, "limt") then repetitions = repetitions + 1 end
+    if left and U.active(left, "lime") then repetitions = repetitions + 1 end
     local right = context.full_hand[i + 1]
     if right and U.active(right, "teal") then repetitions = repetitions + 1 end
     if repetitions > 0 then return { repetitions = repetitions, message = localize("k_again_ex") } end
@@ -58,7 +58,7 @@ SMODS.current_mod.calculate = function(_, context)
     end
     if context.drawing_cards then
         local extra = U.take_pending_draws()
-        if extra > 0 then return { modify = extra } end
+        if extra > 0 then return { cards_to_draw = context.amount + extra } end
     end
     if context.repetition and context.cardarea == G.play then
         local output = neighbour_repetitions(context)

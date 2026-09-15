@@ -11,7 +11,7 @@ SMODS.Consumable {
     use = function(_, _, _, _)
         local target = G.hand.highlighted[1]
         if not target then return end
-        local seal = SMODS.pool_seal { guaranteed = true, key = "microlatch_signet", type_key = "microlatch_signet_type" }
+        local seal = SMODS.poll_seal { guaranteed = true, key = "microlatch_signet", type_key = "microlatch_signet_type" }
         if seal then
             target:set_seal(seal, true, false)
             target:juice_up(0.3, 0.5)

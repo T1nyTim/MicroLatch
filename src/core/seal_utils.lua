@@ -1,4 +1,5 @@
 local M = {}
+local MOD_PREFIX = SMODS.current_mod.prefix
 
 function M.active(card, name) return M.has(card, name) and not card.debuff end
 
@@ -42,7 +43,7 @@ function M.is_first_score(card, context) return context.scoring_hand and context
 
 function M.is_last_scored(card, context) return context.scoring_hand and context.scoring_hand[#context.scoring_hand] == card end
 
-function M.key(name) return SMODS.current_mod.prefix .. "_" .. name end
+function M.key(name) return MOD_PREFIX .. "_" .. name end
 
 function M.queue_draws(amount)
     local state = M.state()
