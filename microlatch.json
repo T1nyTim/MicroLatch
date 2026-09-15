@@ -1,0 +1,16 @@
+{
+    "id": "microlatch",
+    "name": "MicroLatch",
+    "author": ["T1nyTim"],
+    "description": "A Seal Expansion",
+    "prefix": "ml",
+    "main_file": "main.lua",
+    "badge_colour": "FFAAFF",
+    "no_marquee": true,
+    "icon_path": "icon.png",
+    "version": "0.0.1-alpha",
+    "dependencies": [
+        "Steamodded (>=26.829.0)",
+        "Lovely (>=0.9)"
+    ]
+}
