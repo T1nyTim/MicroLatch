@@ -5,10 +5,10 @@
     "description": "A Seal Expansion",
     "prefix": "ml",
     "main_file": "main.lua",
-    "badge_colour": "FFAAFF",
+    "badge_colour": "AA0000",
     "no_marquee": true,
     "icon_path": "icon.png",
-    "version": "0.0.1-alpha",
+    "version": "0.0.3",
     "dependencies": [
         "Steamodded (>=26.829.0)",
         "Lovely (>=0.9)"

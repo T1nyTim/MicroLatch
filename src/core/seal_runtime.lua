@@ -23,11 +23,18 @@ local function neighbour_repetitions(context)
     local i = U.index_of(context.full_hand, target)
     if not i then return nil end
     local repetitions = 0
+    local source_card = nil
     local left = context.full_hand[i - 1]
-    if left and U.active(left, "lime") then repetitions = repetitions + 1 end
+    if left and U.active(left, "lime") then
+        repetitions = repetitions + 1
+        source_card = left
+    end
     local right = context.full_hand[i + 1]
-    if right and U.active(right, "teal") then repetitions = repetitions + 1 end
-    if repetitions > 0 then return { repetitions = repetitions, message = localize("k_again_ex") } end
+    if right and U.active(right, "teal") then
+        repetitions = repetitions + 1
+        source_card = right
+    end
+    if repetitions > 0 then return { repetitions = repetitions, message = localize("k_again_ex"), message_card = source_card } end
 end
 
 local function reset_copper_hand_state(full_hand)
@@ -52,10 +59,7 @@ SMODS.current_mod.calculate = function(_, context)
         U.clear_pending_draws()
         reset_copper_round_state()
     end
-    if context.before then
-        create_from_unscored_cards(context)
-        reset_copper_hand_state(context.full_hand)
-    end
+    if context.before then reset_copper_hand_state(context.full_hand) end
     if context.drawing_cards then
         local extra = U.take_pending_draws()
         if extra > 0 then return { cards_to_draw = context.amount + extra } end
@@ -63,6 +67,22 @@ SMODS.current_mod.calculate = function(_, context)
     if context.repetition and context.cardarea == G.play then
         local output = neighbour_repetitions(context)
         if output then return output end
+    end
+    if context.after and context.main_eval then 
+        local saved_context = {
+            full_hand = context.full_hand,
+            scoring_hand = context.scoring_hand,
+            scoring_name = context.scoring_name,
+            poker_hands = context.poker_hands
+        }
+        G.E_MANAGER:add_event(Event({
+            trigger = "after",
+            delay = 0,
+            func = function()
+                create_from_unscored_cards(saved_context)
+                return true
+            end
+        }))
     end
     if context.remove_playing_cards then create_from_destroyed_cards(context) end
     if context.end_of_round and context.main_eval then U.clear_pending_draws() end

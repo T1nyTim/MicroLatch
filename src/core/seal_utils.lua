@@ -7,7 +7,7 @@ function M.add_consumable(set_name, args)
     if not M.consumable_has_room() then return nil end
     args = args or {}
     args.set = set_name
-    args.area = G.consumables
+    args.area = G.consumeables
     return SMODS.add_card(args)
 end
 
@@ -20,7 +20,7 @@ end
 function M.clear_pending_draws() if G.GAME and G.GAME.microlatch then G.GAME.microlatch.pending_draws = 0 end end
 
 function M.consumable_has_room()
-    return G.consumables and G.consumables.cards and G.consumables.config and #G.consumables.cards < G.consumables.config.card_limit
+    return G.consumeables and G.consumeables.cards and G.consumeables.config and #G.consumeables.cards < G.consumeables.config.card_limit
 end
 
 function M.contains(cards, target) return M.index_of(cards, target) ~= nil end
@@ -39,7 +39,7 @@ function M.index_of(cards, target)
     return nil
 end
 
-function M.is_first_score(card, context) return context.scoring_hand and context.scoring_hand[1] == card end
+function M.is_first_scored(card, context) return context.scoring_hand and context.scoring_hand[1] == card end
 
 function M.is_last_scored(card, context) return context.scoring_hand and context.scoring_hand[#context.scoring_hand] == card end
 
