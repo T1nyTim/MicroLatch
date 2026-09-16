@@ -54,6 +54,29 @@ local function reset_copper_round_state()
     end
 end
 
+local function return_copper_cards(context)
+    if not context.stay_flipped or context.from_area ~= G.play or not context.other_card then return end
+    local card = context.other_card
+    if U.active(card, "copper") and card.ability.seal.scored_this_hand and not card.ability.seal.used_this_round then
+        card.ability.seal.used_this_round = true
+        card.ability.seal.scored_this_hand = false
+        G.E_MANAGER:add_event(Event({
+            trigger = "after",
+            delay = 0,
+            blockable = false,
+            func = function()
+                if card.area ~= G.hand then return false end
+                card.ability.wheel_flipped = nil
+                card.facing = "front"
+                card.sprite_facing = "front"
+                card.flipping = nil
+                return true
+            end
+        }))
+        return { modify = { to_area = G.hand }, prevent_stay_flipped = true, message = "Returned!" }
+    end
+end
+
 SMODS.current_mod.calculate = function(_, context)
     if context.setting_blind then
         U.clear_pending_draws()
@@ -68,7 +91,9 @@ SMODS.current_mod.calculate = function(_, context)
         local output = neighbour_repetitions(context)
         if output then return output end
     end
-    if context.after and context.main_eval then 
+    if context.after and context.main_eval then
+        local copper_return = return_copper_cards(context)
+        if copper_return then return copper_return end
         local saved_context = {
             full_hand = context.full_hand,
             scoring_hand = context.scoring_hand,
