@@ -7,7 +7,7 @@ SMODS.Seal {
     loc_txt = {
         name = "Aqua Seal",
         label = "Aqua Seal",
-        text = { "{C:green}#1# in #2#{} chance to draw", "{C:attention}+#1#{} extra card next", "hand when scored" }
+        text = { "{C:green}#1# in #2#{} chance to draw", "{C:attention}+1{} extra card next", "hand when scored" }
     },
     loc_vars = function(self, _, card)
         local trigger = card or self

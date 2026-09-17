@@ -16,5 +16,8 @@ SMODS.Atlas {
 MICROLATCH.util = assert(SMODS.load_file("src/core/seal_utils.lua"))()
 assert(SMODS.load_file("src/seals/init.lua"))()
 assert(SMODS.load_file("src/shaders.lua"))()
+assert(SMODS.load_file("src/consumables/inscription.lua"))()
+assert(SMODS.load_file("src/consumables/seal_press.lua"))()
 assert(SMODS.load_file("src/consumables/signet.lua"))()
+assert(SMODS.load_file("src/consumables/transference.lua"))()
 assert(SMODS.load_file("src/core/seal_runtime.lua"))()
