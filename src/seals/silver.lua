@@ -1,7 +1,7 @@
 SMODS.Seal {
     key = "silver",
     atlas = "seal_atlas",
-    pos = { x = 7, y = 1 },
+    pos = { x = 8, y = 1 },
     badge_colour = HEX("C0C0C0"),
     text_colour = G.C.BLACK,
     loc_txt = { name = "Silver Seal", label = "Silver Seal", text = { "Earn {C:money}$4{} if this is", "the {C:attention}first{} card scored" }},

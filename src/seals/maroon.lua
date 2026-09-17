@@ -1,7 +1,7 @@
 SMODS.Seal {
     key = "maroon",
     atlas = "seal_atlas",
-    pos = { x = 2, y = 1 },
+    pos = { x = 3, y = 1 },
     badge_colour = HEX("800000"),
     loc_txt = { name = "Maroon Seal", label = "Maroon Seal", text = { "Gains {C:chips}+5{} Chips", "when discarded" }},
     calculate = function(_, card, context)

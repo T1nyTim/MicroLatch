@@ -80,7 +80,6 @@ end
 SMODS.current_mod.calculate = function(_, context)
     if context.setting_blind then
         U.clear_pending_draws()
-        reset_copper_round_state()
     end
     if context.before then reset_copper_hand_state(context.full_hand) end
     if context.drawing_cards then
@@ -110,5 +109,8 @@ SMODS.current_mod.calculate = function(_, context)
         }))
     end
     if context.remove_playing_cards then create_from_destroyed_cards(context) end
-    if context.end_of_round and context.main_eval then U.clear_pending_draws() end
+    if context.end_of_round and context.main_eval then 
+        U.clear_pending_draws()
+        reset_copper_round_state()
+    end
 end

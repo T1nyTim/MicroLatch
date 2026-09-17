@@ -1,7 +1,7 @@
 SMODS.Seal {
     key = "cyan",
     atlas = "seal_atlas",
-    pos = { x = 5, y = 0 },
+    pos = { x = 6, y = 0 },
     badge_colour = HEX("00FFFF"),
     loc_txt = {
         name = "Cyan Seal",

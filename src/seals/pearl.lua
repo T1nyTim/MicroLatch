@@ -1,7 +1,7 @@
 SMODS.Seal {
     key = "pearl",
     atlas = "seal_atlas",
-    pos = { x = 4, y = 1 },
+    pos = { x = 5, y = 1 },
     badge_colour = HEX("EFDFBB"),
     text_colour = G.C.BLACK,
     config = { card_limit = 1 },

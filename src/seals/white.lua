@@ -1,7 +1,7 @@
 SMODS.Seal {
     key = "white",
     atlas = "seal_atlas",
-    pos = { x = 9, y = 1 },
+    pos = { x = 0, y = 2 },
     badge_colour = HEX("FFFFFF"),
     text_colour = G.C.BLACK,
     loc_txt = { name = "White Seal", label = "White Seal", text = { "Gives {C:chips}+20{} Chips", "when scored" }},

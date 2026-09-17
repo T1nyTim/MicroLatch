@@ -1,7 +1,7 @@
 SMODS.Seal {
     key = "lavender",
     atlas = "seal_atlas",
-    pos = { x = 0, y = 1 },
+    pos = { x = 1, y = 1 },
     badge_colour = HEX("C0AADA"),
     loc_txt = { name = "Lavender Seal", label = "Lavender Seal", text = { "Gains {C:mult}+1{} Mult if held", "in hand at end of round" }},
     calculate = function(_, card, context)
